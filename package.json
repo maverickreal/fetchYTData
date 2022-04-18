@@ -1,0 +1,18 @@
+{
+  "name": "fetchytdata",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "chalk": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "mysql2": "^2.3.3"
+  }
+}
