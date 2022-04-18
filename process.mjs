@@ -8,14 +8,9 @@ export const startProcess = (search) => {
         process.env.key + '&q=' + search).then(res => {
 
             const items = res.data.items;
-            if (items.empty) {
-                console.log('Empty!');
-                return;
-            }
+            if (items.empty) return;
 
             let q = queries.store;
-            console.log('q: ' + q);
-
             for (let item of items) {
                 let videoId = item.id.videoId,
                     title = item.snippet.title,
@@ -23,7 +18,6 @@ export const startProcess = (search) => {
                     publishedAt = item.snippet.publishedAt,
                     channelId = item.snippet.channelId;
 
-                //console.log(videoId, title, thumbnail, publishedAt, channelId);
 
                 q += `('${videoId}', '${channelId}', '${title}', '${thumbnail}'),`;
 
@@ -32,5 +26,5 @@ export const startProcess = (search) => {
             q += ';';
             db.run(q);
 
-        }).catch(err => console.error(err));
+        }).catch(err => { throw err; });
 };

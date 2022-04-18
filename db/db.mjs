@@ -11,7 +11,7 @@ export let startDB = () => {
     });
 };
 
-export let run = q => {
-    console.log('\n\nRunning: ' + q + '\n\n');
-    connection.query(q, res => console.log(chalk.yellow('Result: ') + res));
-};
+export let run = q => connection.query(q, res => {
+    if (res)
+        console.log(chalk.yellow('Result: ') + res);
+})
